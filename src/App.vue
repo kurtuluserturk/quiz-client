@@ -11,7 +11,7 @@ const questions = ref([
       'A type of hat'
     ],
     selected: null
-  },  
+  },
   {
     question: 'What is Pinia used for?',
     answer: 2,
@@ -49,7 +49,7 @@ const questions = ref([
       'Fast Track'
     ],
     selected: null
-  }  
+  }
 ])
 
 const quizCompleted = ref(false)
@@ -86,50 +86,50 @@ const NextQuestion = () => {
 </script>
 
 <template>
-  <main class="app">
-    <h1>The Quiz</h1>
+  <main class="parallax">
+      <h1>The Quiz</h1>
 
-    <section class="quiz" v-if="!quizCompleted">
-      <div class="quiz-info">
-        <span class="question">{{ getCurrentQuestion.question }}</span>
-        <span class="score">Score {{ score }}/{{ questions.length }}</span>
-      </div>
+      <section class="quiz" v-if="!quizCompleted">
+        <div class="quiz-info">
+          <span class="question">{{ getCurrentQuestion.question }}</span>
+          <span class="score">Score {{ score }}/{{ questions.length }}</span>
+        </div>
 
-      <div class="options">
-        <label
-          v-for="(option, index) in getCurrentQuestion.options"
-          :key="option"
-          :class="`option ${getCurrentQuestion.selected == index ? index == getCurrentQuestion.answer ? 'correct' : 'wrong' : ''} ${getCurrentQuestion.selected != null && index != getCurrentQuestion.selected ? 'disabled' : ''}`"
-          :for="'option' + index"
-        >
-          <input
-            v-model="getCurrentQuestion.selected"
-            :disabled="getCurrentQuestion.selected"
-            :id="'option' + index"
-            :name="getCurrentQuestion.index"
-            :value="index"
-            @change="SetAnswer"
-            type="radio"
-          />
-          <span>{{ option }}</span>
-        </label>
-      </div>
+        <div class="options">
+          <label
+            v-for="(option, index) in getCurrentQuestion.options"
+            :key="option"
+            :class="`option ${getCurrentQuestion.selected == index ? index == getCurrentQuestion.answer ? 'correct' : 'wrong' : ''} ${getCurrentQuestion.selected != null && index != getCurrentQuestion.selected ? 'disabled' : ''}`"
+            :for="'option' + index"
+          >
+            <input
+              v-model="getCurrentQuestion.selected"
+              :disabled="getCurrentQuestion.selected"
+              :id="'option' + index"
+              :name="getCurrentQuestion.index"
+              :value="index"
+              @change="SetAnswer"
+              type="radio"
+            />
+            <span>{{ option }}</span>
+          </label>
+        </div>
 
-      <button @click="NextQuestion" :disabled="!getCurrentQuestion.selected">
-        {{
-          getCurrentQuestion.index == questions.length - 1
-          ? 'Finish'
-          : getCurrentQuestion.selected == null
-            ? 'Select an option'
-            : 'Next question'
-        }}
-      </button>
-    </section>
+        <button @click="NextQuestion" :disabled="!getCurrentQuestion.selected">
+          {{
+            getCurrentQuestion.index == questions.length - 1
+            ? 'Finish'
+            : getCurrentQuestion.selected == null
+              ? 'Select an option'
+              : 'Next question'
+          }}
+        </button>
+      </section>
 
-    <section v-else>
-      <h2>You have finished the quiz!</h2>
-      <p>Your score is {{ score }}/{{ questions.length }}</p>
-    </section>
+      <section v-else>
+        <h2>You have finished the quiz!</h2>
+        <p>Your score is {{ score }}/{{ questions.length }}</p>
+      </section>
   </main>
 </template>
 
@@ -153,21 +153,23 @@ $errorPrimary: #ff5a5f;
 
 body {
   color: $color_1;
-  // background-image: url("./assets/background.jpg");
-  min-height: 800px;
-  /* Create the parallax scrolling effect */
+  height: 100%;
+}
+
+.parallax {
+  background-image: url("./assets/background.jpg");
+  min-height: 110vh;
+
+  /* the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
 
-.app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
-  height: 100vh;
+  justify-content: center;
 }
 
 h1 {
@@ -178,7 +180,7 @@ h1 {
 .quiz {
   background-color: $background-color_2;
   padding: 1rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
   width: 75vw;
   max-width: 640px;
 
