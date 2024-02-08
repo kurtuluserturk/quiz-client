@@ -6,5 +6,16 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
+## How to run 
+- cd quiz-client
+- npm install
+- npm run dev
+
+## Notes
+- The web app is fully responsive.
+- The parallax scrolling effect was added.
+- SCSS was used for styling as CSS preprocessor.
+- SSR was used in this project.
+
 ## Screenshot
 ![quiz-app](https://github.com/kurtuluserturk/quiz-client/assets/47227072/82bf7276-eb17-4298-ac63-e006e26b3dc3)
