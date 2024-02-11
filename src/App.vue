@@ -43,10 +43,12 @@ const questions = ref([
     selected: null
   },
   {
-    question: 'Where is a great place to work?',
-    answer: 0,
+    question: 'What is Vitest?',
+    answer: 2,
     options: [
-      'Fast Track'
+      'A cat',
+      'A slice of pizza',
+      'A testing framework'
     ],
     selected: null
   }
